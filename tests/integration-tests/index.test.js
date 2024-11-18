@@ -5,6 +5,7 @@ import { getHistoryTest } from "./get-history.test";
 import { placeBetTest } from "./place-bet.test";
 import { settleTest } from "./settle.test";
 import { boostedOddsTest } from "./boosted-odds.test";
+import { viewTest } from "./view.test";
 
 let processStartService;
 const JEST_ASSERT_WAITING_RESPONSE_TIMEOUT = 120000;
@@ -26,9 +27,11 @@ afterAll(() => {
     processStartService.stdin.pause();
     processStartService.kill();
 });
+
 signinTest();
 boostedOddsTest();
 ingameTest();
 getHistoryTest();
 placeBetTest();
 settleTest();
+viewTest();
