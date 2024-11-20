@@ -36,7 +36,7 @@ export default class BaseViewRouter {
         this.socketClient.on("disconnect", this.handleDisconnect.bind(this));
     }
 
-    async handleInGame() {
+    async handleInGame(payload) {
         try {
             if (!this.verify()) {
                 return;
@@ -47,7 +47,7 @@ export default class BaseViewRouter {
             }
 
             this.gameData.viewPlayers[this.socketClient.id] = this.socketClient;
-            await this.viewConsumer.consume(this.socketClient);
+            await this.viewConsumer.consume(this.socketClient, payload?.id);
         } catch (error) {
             this.logService.logError(error);
         }

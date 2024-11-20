@@ -8,7 +8,7 @@ export default class ViewConsumer {
         this.userInfosRepository = userInfosRepository;
     }
 
-    async consume(socketClient) {
+    async consume(socketClient, id) {
         const { remainingTime, gameConfigs, umMessages, delayStartTime } = this.gameData;
         const disabled = !gameConfigs || !gameConfigs.enabled || delayStartTime > 0;
 
@@ -16,7 +16,7 @@ export default class ViewConsumer {
             socketClient.emit(this.definition.name, { remainingTime, um: disabled, um_message: umMessages });
         } else {
             const payload = await this.buildPayload();
-            socketClient.emit(this.definition.name, payload);
+            socketClient.emit(this.definition.name, { [id]: payload });
         }
     }
 

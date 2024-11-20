@@ -1,13 +1,14 @@
-import { GameClientDriver, normalUser } from "sc-game-service-integration-utils";
+import { GameClientDriver, normalUser, eventTypes } from "sc-game-service-integration-utils";
 import { viewSocketOptions } from "./stubs/test-data";
 import { initUserSession } from "./init-user-session";
 
 export const viewTest = () => {
-    describe("when viewo only player joins game", () => {
+    describe("when view only player joins game", () => {
         let driver;
+        let id = 123;
         beforeAll(async () => {
             driver = new GameClientDriver(viewSocketOptions, initUserSession(normalUser));
-            driver.sendInGameEvent();
+            driver.emit(eventTypes.inGame, { id });
         });
 
         afterAll(() => {
@@ -18,9 +19,9 @@ export const viewTest = () => {
             // Arrange
 
             // Act
-            const result = await driver.handleGameEvent((data) => data.gameConfigs);
+            const result = await driver.handleGameEvent((data) => data[id] && data[id].gameConfigs);
             console.log("result", result);
-            const { gameConfigs } = result;
+            const { gameConfigs } = result[id];
 
             // Assert
             expect(gameConfigs.originalOdds).toStrictEqual({
