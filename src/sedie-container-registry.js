@@ -4,7 +4,7 @@ import { SmartBotContainerRegistry } from "sc-smart-bot";
 
 import PlaceBetConsumer from "./consumers/sedie-place-bet-consumer";
 import SeDieSettleGameRoundConsumer from "./consumers/sedie-settle-game-round-consumer";
-import { SedieBot, SedieGameCron } from "./crons";
+import { SedieBot, SedieGameCron, SedieProcessBetQueue } from "./crons";
 import {
     SedieBets,
     SeDieRounds,
@@ -54,6 +54,7 @@ export default class SeDieContainerRegistry extends Table.TableContainerRegistry
         this.container.register({
             bot: asClass(SedieBot).singleton(),
             gameCron: asClass(SedieGameCron).singleton().proxy(),
+            processBetQueue: asClass(SedieProcessBetQueue).singleton().proxy(),
         });
     }
 
