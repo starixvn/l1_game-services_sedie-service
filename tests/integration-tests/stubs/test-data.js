@@ -22,7 +22,7 @@ const viewSocketOptions = {
 const gameConfig = {
     type: 0,
     name: "xocxoc",
-    minBet: 1,
+    minBet: 0.1,
     maxBet: 3000,
     maxBetPerChoices: { even: 3000, odd: 3000, red3: 3000, white3: 3000, red4: 1000, white4: 1000, red2: 3000 },
     odds: { even: 1.97, odd: 1.97, red3: 3.76, white3: 3.76, red4: 14.5, white4: 14.5, red2: 2.5 },

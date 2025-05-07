@@ -44,7 +44,7 @@ export const ingameTest = () => {
             const { gameConfigs } = result;
 
             // Assert
-            expect(gameConfigs.minBet).toEqual(1);
+            expect(gameConfigs.minBet).toEqual(0.1);
             expect(gameConfigs.maxBet).toEqual(3000);
             expect(gameConfigs.maxBetPerChoices).toStrictEqual({
                 even: 3000,

@@ -44,16 +44,16 @@ export const placeBetTest = () => {
 
                 // Act
                 setTimeout(() => {
-                    driver.sendBetEvent("even", 100);
+                    driver.sendBetEvent("even", 0.1);
                 }, getTimeOutToBet(remainingTime, gameSettings.durations) * 1000);
 
                 const result = await driver.handleGameEvent((data) => data.endBet);
 
                 // Assert
                 expect(result.betChoice).toBe("even");
-                expect(result.endBet).toBe(100);
-                expect(result.ownBets).toEqual({ even: 100 });
-                expect(result.ownChip).toEqual({ betChoice: "even", amount: 100 });
+                expect(result.endBet).toBe(0.1);
+                expect(result.ownBets).toEqual({ even: 0.1 });
+                expect(result.ownChip).toEqual({ betChoice: "even", amount: 0.1 });
             });
         });
 
