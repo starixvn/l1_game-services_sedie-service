@@ -15,7 +15,7 @@ export default Object.assign(appConfigs, {
             dbName: "game-service-test-db",
             useNewUrlParser: true,
             useUnifiedTopology: true,
-            auto_reconnect: true,
+            
         },
     },
 });
